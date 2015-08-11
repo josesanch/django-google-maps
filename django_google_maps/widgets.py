@@ -1,12 +1,14 @@
+from __future__ import unicode_literals
 
 from django.conf import settings
 from django.forms import widgets
-from django.utils.encoding import force_unicode
-from django.utils.safestring import mark_safe
 from django.forms.utils import flatatt
+from django.utils.encoding import force_text
+from django.utils.safestring import mark_safe
 
 
 class GoogleMapsAddressWidget(widgets.TextInput):
+
     "a widget that will place a google map right after the #id_address field"
 
     class Media:
@@ -23,6 +25,6 @@ class GoogleMapsAddressWidget(widgets.TextInput):
         final_attrs = self.build_attrs(attrs, type=self.input_type, name=name)
         if value != '':
             # Only add the 'value' attribute if a value is non-empty.
-            final_attrs['value'] = force_unicode(self._format_value(value))
+            final_attrs['value'] = force_text(self._format_value(value))
         html = u'<input%s /><div class="map_canvas_wrapper"><div id="map_canvas"></div></div>'
         return mark_safe(html % flatatt(final_attrs))
