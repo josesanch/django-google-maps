@@ -1,5 +1,5 @@
-
 import os
+
 from setuptools import setup
 
 README = os.path.join(os.path.dirname(__file__), 'README.md')
@@ -26,7 +26,7 @@ setup(
     url="https://github.com/madisona/django-google-maps",
     packages=("django_google_maps",),
     include_package_data=True,
-    install_requires=file('requirements/requirements.txt').read().split('\n'),
+    install_requires=open('requirements/requirements.txt').readlines(),
     classifiers=CLASSIFIERS,
     zip_safe=False,
 )
