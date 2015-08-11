@@ -55,6 +55,9 @@ class GeoPt(object):
         self.lat = self._validate_geo_range(lat, 90)
         self.lon = self._validate_geo_range(lon, 180)
 
+    def __str__(self,):
+        return self.__unicode__()
+
     def __unicode__(self):
         if self.lat is not None and self.lon is not None:
             return "%s,%s" % (self.lat, self.lon)
